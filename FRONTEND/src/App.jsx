@@ -6,8 +6,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route pah="/" element={<Navigate to="/admin-dashboard" />}></Route>
-        <Route pah="/login" element={<Login />}></Route>
+        <Route path="/" element={<Navigate to="/admin-dashboard" />}></Route>
+        <Route path="/login" element={<Login />}></Route>
         <Route path="/admin-dashboard" element={<AdminDashboard />}></Route>
       </Routes>
     </BrowserRouter>
