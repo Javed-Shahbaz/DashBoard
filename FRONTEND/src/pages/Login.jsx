@@ -4,7 +4,17 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+    } catch (error) {
+      const response = await axios.post(
+        "http://localhost:3000/api/auth/login",
+        { email, password }
+      );
+      console.log(error);
+    }
+  };
 
   return (
     <div className="flex flex-col items-center h-screen justify-center bg-gradient-to-b from-teal-600 to-gray-100 space-y-6">
