@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <div className="flex flex-col items-center h-screen justify-center bg-gradient-to-b from-teal-600 to-gray-100 space-y-6">
       <h2 className="font-pacific text-2xl text-white">
@@ -8,7 +11,7 @@ const Login = () => {
       </h2>
       <div className="shadow-lg rounded-lg p-6 w-80 bg-white">
         <h2 className="text-2xl font-bold mb-4 text-center">Admin Login</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="email" className="block text-gray-700">
               Email
@@ -17,6 +20,7 @@ const Login = () => {
               type="email"
               className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-600"
               placeholder="Enter Your Email"
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="mb-4">
@@ -27,6 +31,7 @@ const Login = () => {
               type="password"
               className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-600"
               placeholder="*******"
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <div className="mb-4 flex items-center justify-between">
