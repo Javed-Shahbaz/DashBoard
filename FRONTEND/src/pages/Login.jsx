@@ -3,7 +3,9 @@ import React from "react";
 const Login = () => {
   return (
     <div className="flex flex-col items-center h-screen justify-center bg-gradient-to-b from-teal-600 to-gray-100 space-y-6">
-      <h2 className="font-sevillana text-2xl text-white">Management System</h2>
+      <h2 className="font-pacific text-2xl text-white">
+        School Management System
+      </h2>
       <div className="shadow-lg rounded-lg p-6 w-80 bg-white">
         <h2 className="text-2xl font-bold mb-4 text-center">Admin Login</h2>
         <form>
