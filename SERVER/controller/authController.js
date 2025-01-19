@@ -6,13 +6,11 @@ const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Check if user exists
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(404).json({ success: false, error: "User not found" });
     }
 
-    // Check if password matches
     if (!user.password) {
       return res
         .status(500)
@@ -26,7 +24,6 @@ const login = async (req, res) => {
         .json({ success: false, error: "Invalid password" });
     }
 
-    // Generate JWT token
     if (!process.env.JWT_KEY) {
       return res
         .status(500)
@@ -39,7 +36,6 @@ const login = async (req, res) => {
       { expiresIn: "10d" }
     );
 
-    // Return successful response
     res.status(200).json({
       success: true,
       token,
