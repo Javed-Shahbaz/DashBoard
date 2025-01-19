@@ -7,11 +7,12 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-    } catch (error) {
       const response = await axios.post(
         "http://localhost:3000/api/auth/login",
         { email, password }
       );
+      console.log(response);
+    } catch (error) {
       console.log(error);
     }
   };
