@@ -7,8 +7,8 @@ import conToDb from "./dataBase/db.js";
 // Load environment variables from .env file
 dotenv.config();
 
-conToDb();
 const app = express();
+conToDb();
 app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRouter);

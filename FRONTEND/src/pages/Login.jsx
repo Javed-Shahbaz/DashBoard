@@ -4,17 +4,24 @@ import axios from "axios";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
+      const response = await axios.POST(
         "http://localhost:3000/api/auth/login",
         { email, password }
       );
-      console.log(response);
+      if (response.data.success) {
+        alert("Login Successfully");
+      }
     } catch (error) {
-      console.log(error);
+      if (error.response && !error.response.data.success) {
+        setError(error.response.data.error);
+      } else {
+        setError("Server Error");
+      }
     }
   };
 
@@ -25,6 +32,7 @@ const Login = () => {
       </h2>
       <div className="shadow-lg rounded-lg p-6 w-80 bg-white">
         <h2 className="text-2xl font-bold mb-4 text-center">Admin Login</h2>
+        {error && <p className="text-red-500">{error}</p>}
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="email" className="block text-gray-700">
@@ -35,6 +43,7 @@ const Login = () => {
               className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-600"
               placeholder="Enter Your Email"
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </div>
           <div className="mb-4">
@@ -46,6 +55,7 @@ const Login = () => {
               className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-600"
               placeholder="*******"
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </div>
           <div className="mb-4 flex items-center justify-between">
